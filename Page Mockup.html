@@ -29,14 +29,94 @@
             background-position: 50% 50%;
         }
 
+        /* Main layout */
+        .main-container {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            z-index: 1;
+        }
+
+        /* Login panel */
+        .login-panel {
+            width: 33.33%;
+            background-color: #ffffff;
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            overflow-y: auto;
+            justify-content: center;
+            min-height: 100vh;
+        }
+
+        .login-panel img {
+            max-width: 90%;
+            margin-bottom: 3em;
+        }
+
+        .login-panel h6 {
+            color: #333;
+            font-size: 1.25rem;
+            margin-bottom: 1rem;
+        }
+
+        .login-panel input {
+            width: 100%;
+            padding: 0.75rem;
+            margin-bottom: 1rem;
+            border: 1px solid rgba(0, 0, 0, 0.2);
+            border-radius: 4px;
+            background: #fff;
+            color: #333;
+        }
+
+        .login-panel button {
+            width: 100%;
+            padding: 0.75rem;
+            margin-bottom: 1rem;
+            border: 1px solid #4caf50;
+            border-radius: 4px;
+            background: transparent;
+            color: #4caf50;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .login-panel button:hover {
+            background: #4caf50;
+            color: #fff;
+        }
+
+        .login-panel a {
+            color: #4caf50;
+            text-decoration: none;
+        }
+
+        .login-panel p {
+            color: #333;
+            margin: 1rem 0;
+        }
+
+        .login-panel h5 {
+            color: #333;
+            margin: 1rem 0;
+        }
+
+        .login-content {
+            max-width: 400px;
+            margin: 0 auto;
+            width: 100%;
+        }
+
         /* Center image container */
         .center-container {
             position: fixed;
             top: 50%;
-            left: 50%;
+            left: 66.67%;
             transform: translate(-50%, -50%);
             z-index: 1;
-            width: 90%;
+            width: 60%;
             max-width: 600px;
             max-height: 90vh;
             text-align: center;
@@ -71,14 +151,41 @@
             object-fit: contain;
         }
 
-        @media (max-width: 768px) {
+        /* Responsive styles */
+        @media (max-width: 1024px) {
+            .login-panel {
+                width: 40%;
+            }
+            
             .center-container {
+                left: 70%;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .main-container {
+                flex-direction: column;
+            }
+
+            .login-panel {
+                width: 100%;
+                height: auto;
+                max-height: 50vh;
+                position: relative;
+            }
+
+            .center-container {
+                position: relative;
+                top: 0;
+                left: 50%;
+                transform: translateX(-50%);
                 width: 95%;
-                max-height: 85vh;
+                max-height: 50vh;
+                margin-top: 1rem;
             }
 
             .center-image {
-                max-height: 85vh;
+                max-height: 50vh;
             }
 
             .lightbulb-container {
@@ -93,7 +200,7 @@
             .center-container {
                 max-height: 80vh;
             }
-
+            
             .center-image {
                 max-height: 80vh;
             }
@@ -104,13 +211,40 @@
     <!-- particles.js container -->
     <div id="particles-js"></div>
 
-    <!-- Center image container -->
-    <div class="center-container">
-        <a href="https://www.infegy.com/resources">
-            <img src="https://www.infegy.com/hubfs/Starscape%20Landing%20Page/Starscape%20Login%20Page.png" 
-                 alt="Starscape Login" 
-                 class="center-image">
-        </a>
+    <!-- Main container -->
+    <div class="main-container">
+        <!-- Login panel -->
+        <div class="login-panel">
+            <div class="login-content">
+                <img src="Infegy_Logo_FullColor.svg" alt="Infegy logo">
+                <form>
+                    <h6>Sign in to your account</h6>
+                    <input type="email" placeholder="Email" required>
+                    <input type="password" placeholder="Password" required>
+                    <button type="submit">Sign in</button>
+                    <h6>Or use Single Sign-On (SSO)</h6>
+                    <!-- SSO buttons would go here -->
+                </form>
+                <h5>Infegy Starscape</h5>
+                <p>With industry-leading data, search speed, and customizable visualizations, Infegy Starscape makes it easy to find insights that lead to impact.<br>
+                <a href="https://www.infegy.com/platform/infegy-starscape" target="_blank">Learn more</a></p>
+                <p>Don't have access? Request a demo <a href="https://www.infegy.com/resources/demo" target="_blank">here</a>.</p>
+                <p style="font-size: 0.75rem;">Copyright ©2025 Infegy, Inc. All rights reserved.</p>
+                <p style="font-size: 0.75rem;">
+                    <a href="https://www.infegy.com/privacy" target="_blank">Privacy Policy</a> - 
+                    <a href="https://www.infegy.com/terms-conditions" target="_blank">Terms and Conditions</a>
+                </p>
+            </div>
+        </div>
+
+        <!-- Center image container -->
+        <div class="center-container">
+            <a href="https://www.infegy.com/resources">
+                <img src="https://www.infegy.com/hubfs/Starscape%20Landing%20Page/Starscape%20Login%20Page.png" 
+                     alt="Starscape Login" 
+                     class="center-image">
+            </a>
+        </div>
     </div>
 
     <!-- Lightbulb logo -->
@@ -122,12 +256,14 @@
 
     <!-- particles.js lib -->
     <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <!-- stats.js lib -->
+    <script src="https://threejs.org/examples/js/libs/stats.min.js"></script>
 
     <script>
         particlesJS("particles-js", {
             "particles": {
                 "number": {
-                    "value": 160,
+                    "value": 80,
                     "density": {
                         "enable": true,
                         "value_area": 800
@@ -147,12 +283,12 @@
                     }
                 },
                 "opacity": {
-                    "value": 1,
-                    "random": true,
+                    "value": 0.5,
+                    "random": false,
                     "anim": {
-                        "enable": true,
+                        "enable": false,
                         "speed": 1,
-                        "opacity_min": 0,
+                        "opacity_min": 0.1,
                         "sync": false
                     }
                 },
@@ -161,13 +297,13 @@
                     "random": true,
                     "anim": {
                         "enable": false,
-                        "speed": 4,
-                        "size_min": 0.3,
+                        "speed": 40,
+                        "size_min": 0.1,
                         "sync": false
                     }
                 },
                 "line_linked": {
-                    "enable": false,
+                    "enable": true,
                     "distance": 150,
                     "color": "#ffffff",
                     "opacity": 0.4,
@@ -175,16 +311,16 @@
                 },
                 "move": {
                     "enable": true,
-                    "speed": 1,
+                    "speed": 2,
                     "direction": "none",
-                    "random": true,
+                    "random": false,
                     "straight": false,
                     "out_mode": "out",
                     "bounce": false,
                     "attract": {
                         "enable": false,
                         "rotateX": 600,
-                        "rotateY": 600
+                        "rotateY": 1200
                     }
                 }
             },
@@ -193,30 +329,30 @@
                 "events": {
                     "onhover": {
                         "enable": true,
-                        "mode": "bubble"
+                        "mode": "grab"
                     },
                     "onclick": {
                         "enable": true,
-                        "mode": "repulse"
+                        "mode": "push"
                     },
                     "resize": true
                 },
                 "modes": {
                     "grab": {
-                        "distance": 400,
+                        "distance": 140,
                         "line_linked": {
                             "opacity": 1
                         }
                     },
                     "bubble": {
-                        "distance": 250,
-                        "size": 0,
+                        "distance": 400,
+                        "size": 40,
                         "duration": 2,
-                        "opacity": 0,
+                        "opacity": 8,
                         "speed": 3
                     },
                     "repulse": {
-                        "distance": 400,
+                        "distance": 200,
                         "duration": 0.4
                     },
                     "push": {
