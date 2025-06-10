@@ -28,6 +28,7 @@
             align-items: center;
             box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
             z-index: 2;
+            min-height: 100vh;
         }
 
         .logo {
@@ -122,6 +123,7 @@
             flex: 1;
             position: relative;
             z-index: 1;
+            min-height: 100vh;
         }
 
         #particles-js {
@@ -222,10 +224,51 @@
             text-decoration: underline;
         }
 
+        @media (max-width: 1200px) {
+            .center-container {
+                max-width: 500px;
+            }
+        }
+
+        @media (max-width: 992px) {
+            .login-panel {
+                width: 350px;
+                padding: 1.5rem;
+            }
+
+            .center-container {
+                max-width: 400px;
+            }
+        }
+
         @media (max-width: 768px) {
+            body {
+                flex-direction: column;
+            }
+
+            .login-panel {
+                width: 100%;
+                min-height: auto;
+                padding: 1.5rem;
+                box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            }
+
+            .logo {
+                margin-bottom: 2em;
+            }
+
+            .content-section {
+                min-height: calc(100vh - 400px);
+            }
+
             .center-container {
                 width: 95%;
                 max-height: 85vh;
+                position: relative;
+                top: 0;
+                left: 0;
+                transform: none;
+                margin: 2rem auto;
             }
 
             .center-image {
@@ -240,13 +283,62 @@
             }
         }
 
+        @media (max-width: 576px) {
+            .login-panel {
+                padding: 1rem;
+            }
+
+            .logo {
+                margin-bottom: 1.5em;
+            }
+
+            .form-title {
+                font-size: 1.1rem;
+            }
+
+            .sso-title {
+                font-size: 1.1rem;
+            }
+
+            .center-container {
+                margin: 1rem auto;
+            }
+        }
+
         @media (max-height: 600px) {
+            .login-panel {
+                padding: 1rem;
+            }
+
+            .logo {
+                margin-bottom: 1.5em;
+            }
+
             .center-container {
                 max-height: 80vh;
             }
 
             .center-image {
                 max-height: 80vh;
+            }
+        }
+
+        @media (orientation: landscape) and (max-height: 500px) {
+            body {
+                flex-direction: row;
+            }
+
+            .login-panel {
+                width: 350px;
+                min-height: 100vh;
+            }
+
+            .content-section {
+                min-height: 100vh;
+            }
+
+            .center-container {
+                max-height: 90vh;
             }
         }
     </style>
